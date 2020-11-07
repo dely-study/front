@@ -1,7 +1,12 @@
+import { useState } from 'react';
+
 import logo from './logo.svg';
 import './App.css';
 
-function App() {
+const App = () => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
   return (
     <div className="App">
       <header className="App-header">
@@ -9,17 +14,13 @@ function App() {
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+
+        <input type="email" onChange={(e) => setEmail(e.target.value)}></input>
+        <input type="password" onChange={(e) => setPassword(e.target.value)}></input>
+        <button onClick={() => console.log(email, password)}>click</button>
       </header>
     </div>
   );
-}
+};
 
 export default App;
