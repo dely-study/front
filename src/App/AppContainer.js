@@ -5,7 +5,8 @@ import AppPresenter from './AppPresenter';
 import { useMutation, useQuery } from '@apollo/client';
 import { GET_USER, SIGN_IN } from '../queries/queries';
 
-const AppContainer = () => {
+const AppContainer = (props) => {
+  console.log(props);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -22,7 +23,7 @@ const AppContainer = () => {
     signIn({ variables: { email: email, password: password } }).then((res) => {
       const { data } = res;
       if (data && data.signIn && data.signIn.ok) {
-        window.open('https://naver.com');
+        props.history.push('/logged-in');
         return;
       }
     });
